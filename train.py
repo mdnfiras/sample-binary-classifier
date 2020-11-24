@@ -42,10 +42,8 @@ opt = keras.optimizers.Adam(learning_rate=0.0001)
 model.compile(optimizer=keras.optimizers.get(opt), loss='mean_squared_error')
 
 # printing summary
-stdout = sys.stdout
-sys.stdout = open("report/structure.txt", "w")
-model.summary()
-sys.stdout = stdout
+fstructure = open("report/structure.txt", "w")
+model.summary(print_fn=lambda x: fstructure.write(x + '\n'))
 
 # training
 history = model.fit(X_train, y_train, epochs=1000, verbose=2)
