@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 # preparing output folder
-if (not(os.path.isfile("report"))):
+if (not(os.path.isdir("report"))):
     os.mkdir("report")
 
 # reading data
@@ -44,6 +44,7 @@ model.compile(optimizer=keras.optimizers.get(opt), loss='mean_squared_error')
 # printing summary
 fstructure = open("report/structure.txt", "w")
 model.summary(print_fn=lambda x: fstructure.write(x + '\n'))
+fstructure.close()
 
 # training
 history = model.fit(X_train, y_train, epochs=1000, verbose=2)
@@ -61,6 +62,7 @@ plt.savefig('report/history.png')
 fmetrics = open("report/metrics.txt", "w")
 print('Initial loss value : ', losses[0], file=fmetrics)
 print('Final loss value : ', losses[-1], file=fmetrics)
+fmetrics.close()
 
 # saving
 model.save('report/weights.h5')
