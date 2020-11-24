@@ -14,10 +14,13 @@ jobs:
           pip install -r requirements.txt
           python train.py
           
+          echo "## Model structure" > report.md
+          cat report/structure.txt >> report.md
+          
           echo "## Model metrics" > report.md
           cat report/metrics.txt >> report.md
           
-          echo "## Data viz" >> report.md
-          cml-publish report/image.jpg --md >> report.md
+          echo "## History" >> report.md
+          cml-publish report/history.png --md >> report.md
           
           cml-send-comment report.md
