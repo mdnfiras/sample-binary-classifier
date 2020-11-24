@@ -48,16 +48,18 @@ model.summary()
 sys.stdout = stdout
 
 # training
-history = model.fit(X_train, y_train, epochs=1000, verbose=1)
+history = model.fit(X_train, y_train, epochs=1000, verbose=2)
 
 # evaluation
 losses = history.history['loss']
 epochs = history.epoch
+
 plt.plot(epochs[50:], losses[50:])
 plt.xlabel("epochs")
 plt.ylabel('losses')
 plt.title('Loss per Epoch')
-plt.savefig('history.png', bbox_inches='tight')
+plt.show()
+plt.savefig('report/history.png')
 fmetrics = open("report/metrics.txt", "w")
 print('Initial loss value : ', losses[0], file=fmetrics)
 print('Final loss value : ', losses[-1], file=fmetrics)
