@@ -18,7 +18,9 @@ jobs:
           cat report/structure.txt >> report.md
           
           echo "## Model metrics" >> report.md
+          echo "<pre>" >> report.md
           cat report/metrics.txt >> report.md
+          echo "</pre>" >> report.md
           
           echo "## History" >> report.md
           cml-publish report/history.png --md >> report.md
