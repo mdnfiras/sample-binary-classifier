@@ -15,7 +15,9 @@ jobs:
           python train.py
           
           echo "## Model structure" > report.md
+          echo "<pre>" >> report.md
           cat report/structure.txt >> report.md
+          echo "</pre>" >> report.md
           
           echo "## Model metrics" >> report.md
           echo "<pre>" >> report.md
